@@ -1,0 +1,100 @@
+<html>
+
+<head>
+    <title id="pagetitle">
+    </title>
+</head>
+
+<body>
+
+    <div id="SelectColor">
+        <script>
+
+            var array_color = ["red","blue","violet","lila","yellow","orange"];
+
+            var selectlist = document.createElement("select");
+            selectlist.id = "bgcolor";
+            document.getElementById('SelectColor').appendChild(selectlist);
+
+            for (var i = 0; i < array_color.length; i++) {
+                var option = document.createElement("option");
+                option.value = array_color[i];
+                option.text = array_color[i];
+                selectlist.appendChild(option);
+            }
+        </script>      
+    </div>
+
+
+
+    <div id="body_1">
+        <script>
+            var array_1 = ["Page Title: ", "Table Length: ", "Table Width: "];
+            var array_id = ["title", "length", "width"];
+            var array_placeholder = ["give this page a title", "give the desired table length", "give the desired table width"];
+
+            let table_1 = document.createElement("table");
+            let tbody_1 = document.createElement("tbody");
+            table_1.appendChild(tbody_1);
+            document.getElementById('body_1').appendChild(table_1);
+
+            for (var i = 0; i < array_1.length; i++) {
+
+                let row_1 = document.createElement('tr');
+                let row_question = document.createElement('td');
+                row_question.innerHTML = array_1[i];
+
+                let row_box = document.createElement('td');
+
+                var input = document.createElement('input');
+                input.type = 'value';
+                input.placeholder = array_placeholder[i];
+                input.id = array_id[i];
+                row_box.appendChild(input);
+
+                row_1.appendChild(row_question);
+                row_1.appendChild(row_box);
+                tbody_1.appendChild(row_1);
+            }
+        </script>
+    </div>
+
+
+    
+    <button onclick="SubmitFunction()">submit</button>
+
+    <div id="body_2">     
+    </div>
+
+    <script>
+        function SubmitFunction(){
+            let color = document.getElementById("bgcolor").value;
+            document.body.style.backgroundColor = color;
+
+            let title = document.getElementById("title").value;
+            document.getElementById("pagetitle").innerHTML = title;
+
+            var length = document.getElementById("length").value;
+            var width = document.getElementById("width").value;
+
+            let table = document.createElement("table");
+            let tbody = document.createElement("tbody");
+            table.appendChild(tbody);
+            document.getElementById('body_2').appendChild(table);
+
+            for(var x = 0; x <= length; x++){
+                let row = document.createElement('tr');
+
+                for(var y = 0; y <= width; y++){
+                    let row_data = document.createElement('td');
+                    row_data.innerHTML = y+x;
+                    row.appendChild(row_data);
+                }
+                
+                tbody.appendChild(row);
+            }
+        }  
+    </script>
+
+</body>
+</html>
