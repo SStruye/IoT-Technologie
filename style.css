@@ -1,14 +1,15 @@
 body{
+    font-family: FreeMono, monospace;
     width: 90%;
     margin: auto;
     margin-top: 1%;
     background-color: #522065; 
-    border: 3px solid #f2f2f2;
+    border: 3px solid white;
     border-radius: 15px;
 }
 
 .topnav{
-    border-bottom: 3px solid #f2f2f2; 
+    border-bottom: 3px solid white; 
     list-style:none;
     margin:0;
     padding:0;
@@ -18,11 +19,78 @@ body{
     display:inline;
 }
 .topnav a{
-    font-family: FreeMono, monospace;
-    color: #f2f2f2;
+    color: white;
     text-decoration: none;
     font-size: 20px;
     display:inline-block;
     padding: 14px 16px;
 }
 
+table.A{
+    padding: 20px 0px;
+    width: 60%;
+    margin: auto;
+    border-collapse:separate;
+    border-spacing: 0;
+    color: white;
+    font-size: 15px;
+}
+
+tr th, tr td {
+    border-right:solid white 3px;
+    border-bottom:solid white 3px;
+    padding: 5px;
+}
+tr th:first-child,
+tr td:first-child {
+    border-left: 3px solid white;
+  }
+tr th {
+    border-top: 3px solid white;
+    text-align: left;
+  }
+tr:first-child th:first-child {
+    border-top-left-radius: 15px;
+  }
+tr:first-child th:last-child {
+    border-top-right-radius: 15px;
+  }
+tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
+  }
+tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
+  }
+
+.sidenav{
+    display: inline-block;
+    margin: 1%;
+    border: 3px solid white;
+    border-radius: 15px;
+    padding: 14px 10px;
+    list-style-type: none;
+}
+
+li button {
+    display: block;
+}
+
+.button{
+    font-family: FreeMono, monospace;
+    background-color: #522065;
+    border: none;
+    color: white;
+    padding: 14px 16px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
