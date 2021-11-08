@@ -3,7 +3,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="style.css">
-    <title>Date Aquisition</title>
+    <title>Date Measurement</title>
 </head>
 
 <body>
@@ -14,45 +14,84 @@
         <li><a href="#about" class="active">about</a></li>
     </div>
 
-    <div>
+    <div class="container">
         <div class = "sidenav">
         <li><button class="button"type="button" value="Sensor 2" onclick="loadSENS1(this.value)">Sensor 1 Only</button></li>
         <li><button class="button"type="button" value="Sensor 1" onclick="loadSENS2(this.value)">Sensor 2 Only</button></li>
         <li><button class="button"type="button" value="n/a" onclick="loadBOTH(this.value)">Both Sensors</button></li>
+        <li><input  type="text" placeholder="Search value sensor 1..." onkeyup="showVAL1(this.value)"></li>
+        <li><input  type="text" placeholder="Search value sensor 2..." onkeyup="showVAL2(this.value)"></li>   
         </div>
 
-        <div id = "Div_Table">
+        <div class ="Div_Table" id = "Div_Table_ID">
         </div>    
         
     </div>
 
-    <script>
-        function loadSENS1(str) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onload = function() {
-            document.getElementById("Div_Table").innerHTML = this.responseText;
-        }
-        xmlhttp.open("GET", "Dynamic_Table.php?q="+str, true);
-        xmlhttp.send();
-        }
-        function loadSENS2(str) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onload = function() {
-            document.getElementById("Div_Table").innerHTML = this.responseText;
-        }
-        xmlhttp.open("GET", "Dynamic_Table.php?q="+str, true);
-        xmlhttp.send();
-        }
-        function loadBOTH(str) {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onload = function() {
-            document.getElementById("Div_Table").innerHTML = this.responseText;
-        }
-        xmlhttp.open("GET", "Dynamic_Table.php?q="+str, true);
-        xmlhttp.send();
-        }
-    </script>
+
 
 </body>
 
+<script>
+        function loadSENS1(str) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function() {
+                document.getElementById("Div_Table_ID").innerHTML = this.responseText;
+            }
+            xmlhttp.open("GET", "Dynamic_Table.php?q="+str, true);
+            xmlhttp.send();
+        }
+        ////////////////////////////////////////////////////////////////////////////
+        function loadSENS2(str) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function() {
+                document.getElementById("Div_Table_ID").innerHTML = this.responseText;
+            }
+            xmlhttp.open("GET", "Dynamic_Table.php?q="+str, true);
+            xmlhttp.send();
+        }
+        ////////////////////////////////////////////////////////////////////////////
+        function loadBOTH(str) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function() {
+                document.getElementById("Div_Table_ID").innerHTML = this.responseText;
+            }
+            xmlhttp.open("GET", "Dynamic_Table.php?q="+str, true);
+            xmlhttp.send();
+        }
+        ////////////////////////////////////////////////////////////////////////////
+        function showVAL1(str) {
+            if (str.length == 0) {
+                document.getElementById("Div_Table_ID").innerHTML = "";
+                return;
+            } else {
+                const arr = ["1", str];
+                const strarr = JSON.stringify(arr);
+
+                const xmlhttp = new XMLHttpRequest();
+                xmlhttp.onload = function() {
+                document.getElementById("Div_Table_ID").innerHTML = this.responseText;
+                }
+            xmlhttp.open("GET", "Dynamic_Table_Single.php?q=" + strarr);
+            xmlhttp.send();
+            }
+        }
+        ////////////////////////////////////////////////////////////////////////////
+        function showVAL2(str) {
+            if (str.length == 0) {
+                document.getElementById("Div_Table_ID").innerHTML = "";
+                return;
+            } else {
+                const arr = ["2", str];
+                const strarr = JSON.stringify(arr);
+
+                const xmlhttp = new XMLHttpRequest();
+                xmlhttp.onload = function() {
+                document.getElementById("Div_Table_ID").innerHTML = this.responseText;
+                }
+            xmlhttp.open("GET", "Dynamic_Table_Single.php?q=" + strarr);
+            xmlhttp.send();
+            }
+        }        
+</script>
 </html>

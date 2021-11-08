@@ -1,8 +1,12 @@
+html { height: 100%; }
+
 body{
     font-family: FreeMono, monospace;
     width: 90%;
+    height: 900px;
     margin: auto;
     margin-top: 1%;
+    margin-bottom: 1%;
     background-color: #522065; 
     border: 3px solid white;
     border-radius: 15px;
@@ -26,14 +30,26 @@ body{
     padding: 14px 16px;
 }
 
-table.A{
+.container{
+  height: 850px;
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
+
+.A{
     padding: 20px 0px;
-    width: 60%;
     margin: auto;
+    width: 80%;
     border-collapse:separate;
     border-spacing: 0;
     color: white;
     font-size: 15px;
+}
+
+.B{
+  padding: 20px 0px;
+  margin: auto;
+  border: none;
 }
 
 tr th, tr td {
@@ -63,34 +79,62 @@ tr:last-child td:last-child {
   }
 
 .sidenav{
-    display: inline-block;
-    margin: 1%;
-    border: 3px solid white;
-    border-radius: 15px;
+    height: 820px;
+    border-right: 3px solid white;
     padding: 14px 10px;
     list-style-type: none;
+    
 }
 
-li button {
-    display: block;
+
+li{
+  height: 50px;
+  width: 180px;
+  color: white;
 }
 
 .button{
-    font-family: FreeMono, monospace;
-    background-color: #522065;
-    border: none;
-    color: white;
-    padding: 14px 16px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+  color: white;
+  height: 50px;
+  width: 180px;
+  border: none;  
+  border-radius: 6px;
+  font-family: FreeMono, monospace;
+  background-color: #522065;    
+  transition-duration: 0.1s;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.box{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.button:hover{
+  background-color: #8f6e9b;  
 }
-  
+
+input{
+  border: 0;
+  border-radius: 12px;
+  padding: 14px 20px;
+}
+
+
+input[type="text"], textarea {
+  display: block;
+  margin : auto; 
+  height: 6px;          
+  background-color : #8f6e9b; 
+  width: 150px;
+  color: white;
+}
+
+::placeholder {
+  color: white;
+  opacity: 0.8;
+}
+
+input:focus
+{
+    border: 2px solid white;
+    box-shadow: none;
+    outline: none;
+}

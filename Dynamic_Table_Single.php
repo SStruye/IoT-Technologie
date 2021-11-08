@@ -1,12 +1,13 @@
+
 <?php
 $servername = "localhost";
 $username = "student_12001895";
 $password = "hgDgXCYb8OB1";
 
-$q = $_GET['q'];
-
 $header = array("ID", "Sensor 1", "Sensor 2", "Timestamp");
 $fieldname = array("S_ID", "S1_Value", "S2_Value", "S_Timestamp");
+
+$q = json_decode($_GET['q']);
 
 $conn = new mysqli($servername, $username, $password);
 
@@ -19,21 +20,20 @@ $sql = "SELECT S_ID, S_Timestamp, S1_Value, S2_Value FROM student_12001895.Data_
 echo '<table class="A"> <tr>'; 
 
 for($i = 0; $i <= 3; $i++){
-    if( strcmp($header[$i], $q) !== 0){
         echo '<th>'.$header[$i].'</th>';
-    };
 };
 echo '</tr>';
 
     
 if ($result = $conn->query($sql)) {
     while ($row = $result->fetch_assoc()) {
-        echo '<tr>';     
-        for($i = 0; $i <= 3; $i++){
-            if( strcmp($header[$i], $q) !== 0){
-                echo '<td>'.$row[$fieldname[$i]].'</td>';
+        echo '<tr>';
+        if($row[$fieldname[$q[0]]] == $q[1]){
+            for($i = 0; $i <= 3; $i++){
+                    echo '<td>'.$row[$fieldname[$i]].'</td>';
             };
-        };
+        }
+
         echo '</tr>';
     }
     
@@ -41,4 +41,5 @@ if ($result = $conn->query($sql)) {
 } 
 
 $conn->close();
+
 ?>
