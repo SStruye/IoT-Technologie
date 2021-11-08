@@ -18,9 +18,9 @@ $sql = "SELECT S_ID, S_Timestamp, S1_Value, S2_Value FROM student_12001895.Data_
  echo "<?xml version='1.0' encoding='UTF-8'?>
  <rss version='2.0'>
  <channel>
- <title>w3schools.in | RSS</title>
+ <title>Generate RSS</title>
  <link>/</link>
- <description>Cloud RSS</description>
+ <description></description>
  <language>en-us</language>";
  $x = 0;
  $y = 0;

@@ -14,20 +14,15 @@ if ($conn->connect_errno) {
 }
 echo "Connected successfully<br />";
 
-$name = $_POST['name'];
-$age = $_POST['age'];
+$S1_Value = $_POST['S1_Value'];
+$S2_Value = $_POST['S2_Value'];
 
 if(isset($_POST['submit']) && $_POST['randcheck']==$_SESSION['rand'])
 {
-    if(!empty($_POST['check'])){
-        $adult = 1;
-    }
-    else{
-        $adult = 0;
-    }
+    
     $sql = "INSERT INTO student_12001895.Data_Measurement".
     "(S1_Value, S2_Value) "."VALUES ".
-    "('$S1_Value, $S2_Value')";
+    "('$S1_Value', '$S2_Value')";
 
     if ($conn->query($sql)) {
         printf("Record inserted successfully.<br />");
