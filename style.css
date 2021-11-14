@@ -1,33 +1,42 @@
-html { height: 100%; }
+html {
+  background-color: #191919;
+  font-family: 'Trebuchet MS', sans-serif; 
+  }
 
 body{
-    font-family: FreeMono, monospace;
-    width: 90%;
-    height: 900px;
-    margin: auto;
-    margin-top: 1%;
-    margin-bottom: 1%;
-    background-color: #522065; 
-    border: 3px solid white;
-    border-radius: 15px;
+  width: 90%;
+  margin: auto;
+  margin-top: 1%;
 }
 
 .topnav{
-    border-bottom: 3px solid white; 
-    list-style:none;
-    margin:0;
-    padding:0;
-    text-align:center;
+  border: 1px solid #737373;
+  /* border-radius: 15px; */
+  background-color: #191919;
+  list-style:none;
+  margin:0;
+  padding:0;
+  text-align:center;
 }
+
 .topnav li{
-    display:inline;
+  display:inline;
 }
+
 .topnav a{
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    display:inline-block;
-    padding: 14px 16px;
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  display:inline-block;
+  padding: 14px 16px;
+}
+
+.active{
+  transition-duration: 0.4s;
+}
+
+.active:hover{
+  color: #c2c2d6;
 }
 
 .container{
@@ -37,19 +46,13 @@ body{
 }
 
 .A{
-    padding: 20px 0px;
-    margin: auto;
-    width: 80%;
-    border-collapse:separate;
-    border-spacing: 0;
-    color: white;
-    font-size: 15px;
-}
-
-.B{
   padding: 20px 0px;
   margin: auto;
-  border: none;
+  width: 80%;
+  border-collapse:separate;
+  border-spacing: 0;
+  color: white;
+  font-size: 15px;
 }
 
 tr th, tr td {
@@ -80,51 +83,50 @@ tr:last-child td:last-child {
 
 .sidenav{
     height: 820px;
-    border-right: 3px solid white;
-    padding: 14px 10px;
     list-style-type: none;
     
 }
 
-
 li{
   height: 50px;
-  width: 180px;
   color: white;
 }
-
+.sidebuttons{
+  padding: 14px 20px;
+  border: 1px solid #737373;
+}
 .button{
   color: white;
-  height: 50px;
-  width: 180px;
-  border: none;  
-  border-radius: 6px;
-  font-family: FreeMono, monospace;
-  background-color: #522065;    
+  font-weight: 500;
+  height: 50px;  
   transition-duration: 0.1s;
+  border: none;
+  background-color: #191919;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   cursor: pointer;
 }
 
 .button:hover{
-  background-color: #8f6e9b;  
+  background-color: #616191;  
 }
 
-input{
-  border: 0;
-  border-radius: 12px;
-  padding: 14px 20px;
+
+.in{
+  margin-top: 30px;
 }
 
 
 input[type="text"], textarea {
+  border: none;
+  padding: 14px 20px;
   display: block;
   margin : auto; 
   height: 6px;          
-  background-color : #8f6e9b; 
+  background-color : #737373; 
   width: 150px;
   color: white;
+
 }
 
 ::placeholder {
@@ -134,7 +136,6 @@ input[type="text"], textarea {
 
 input:focus
 {
-    border: 2px solid white;
     box-shadow: none;
     outline: none;
 }

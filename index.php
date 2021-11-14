@@ -16,11 +16,13 @@
 
     <div class="container">
         <div class = "sidenav">
+        <div class = "sidebuttons">
         <li><button class="button"type="button" value="Sensor 2" onclick="loadSENS1(this.value)">Sensor 1 Only</button></li>
         <li><button class="button"type="button" value="Sensor 1" onclick="loadSENS2(this.value)">Sensor 2 Only</button></li>
         <li><button class="button"type="button" value="n/a" onclick="loadBOTH(this.value)">Both Sensors</button></li>
-        <li><input  type="text" placeholder="Search value sensor 1..." onkeyup="showVAL1(this.value)"></li>
-        <li><input  type="text" placeholder="Search value sensor 2..." onkeyup="showVAL2(this.value)"></li>   
+        </div>
+        <li class="in"><input  type="text" placeholder="Search value sensor 1..." onkeyup="showVAL1(this.value)"></li>
+        <li class="in"><input  type="text" placeholder="Search value sensor 2..." onkeyup="showVAL2(this.value)"></li>   
         </div>
 
         <div class ="Div_Table" id = "Div_Table_ID">
