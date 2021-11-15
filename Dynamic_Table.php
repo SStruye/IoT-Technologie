@@ -20,7 +20,7 @@ echo '<table class="A"> <tr>';
 
 for($i = 0; $i <= 3; $i++){
     if( strcmp($header[$i], $q) !== 0){
-        echo '<th>'.$header[$i].'</th>';
+        echo '<th class="tbl">'.$header[$i].'</th>';
     };
 };
 echo '</tr>';
@@ -31,7 +31,7 @@ if ($result = $conn->query($sql)) {
         echo '<tr>';     
         for($i = 0; $i <= 3; $i++){
             if( strcmp($header[$i], $q) !== 0){
-                echo '<td>'.$row[$fieldname[$i]].'</td>';
+                echo '<td class="tbl">'.$row[$fieldname[$i]].'</td>';
             };
         };
         echo '</tr>';

@@ -16,6 +16,7 @@
     $max=50;
     echo rand($min,$max);
 
+    
     for($i = 0; $i < 20; $i++){
 
       $S1_Value = rand($min,$max);

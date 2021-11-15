@@ -20,7 +20,7 @@ $sql = "SELECT S_ID, S_Timestamp, S1_Value, S2_Value FROM student_12001895.Data_
 echo '<table class="A"> <tr>'; 
 
 for($i = 0; $i <= 3; $i++){
-        echo '<th>'.$header[$i].'</th>';
+        echo '<th class ="tbl">'.$header[$i].'</th>';
 };
 echo '</tr>';
 
@@ -30,7 +30,7 @@ if ($result = $conn->query($sql)) {
         echo '<tr>';
         if($row[$fieldname[$q[0]]] == $q[1]){
             for($i = 0; $i <= 3; $i++){
-                    echo '<td>'.$row[$fieldname[$i]].'</td>';
+                    echo '<td class ="tbl">'.$row[$fieldname[$i]].'</td>';
             };
         }
 
