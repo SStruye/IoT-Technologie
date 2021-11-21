@@ -17,6 +17,7 @@ body{
 
 .topnav li{
   display:inline;
+
 }
 
 .topnav a{
@@ -77,7 +78,7 @@ input[type="text"], textarea {
   padding: 5px;
   border-radius: 4px;
   background-color: #191919; 
-  border: 1px solid #d1d1d1;
+  border: 2px solid #d1d1d1;
 }
 
 .A{
@@ -85,7 +86,7 @@ input[type="text"], textarea {
   background-color: #242424;
   text-align: center;
   margin: auto;
-  width: 80%;
+  width: 70%;
   border-collapse:separate;
   border-spacing: 0;
   color: white;
@@ -129,10 +130,10 @@ th.tbl, td.tbl{
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 22px;
+    width: 22px;
     left: 4px;
-    bottom: 3px;
+    bottom: 4px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
@@ -141,23 +142,23 @@ th.tbl, td.tbl{
     background-color: #191919;
   }
   input:checked + .slider {
-    background-color: rgb(112, 3, 3);
+    background-color: #00e600;
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px rgb(112, 3, 3);
+    box-shadow: 0 0 1px #00e600;
   }
 
   input:checked + .slider:before {
-    -webkit-transform: translateX(25px);
-    -ms-transform: translateX(25px);
-    transform: translateX(25px);
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
   }
   
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
-    border: 1px solid #d1d1d1;
+    border: 2px solid #d1d1d1;
   }
   
   .slider.round:before {

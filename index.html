@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html>
+    
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,13 +11,11 @@
 </head>
 
 <body>
-
     <div class = "topnav">
         <li><a href="#home" class="active">home</a></li>
         <li><a href="#contact" class="active">contact</a></li>
         <li><a href="#about" class="active">about</a></li>
     </div>
-
     <div class="content-sidebar">
 
         <div class = "sidebar">
@@ -41,26 +40,21 @@
     </div>
 </body>
 
-<script>
-    
+<script>  
     function LoadSens(){
         var chk1 = document.getElementById("chk1");
         var chk2 = document.getElementById("chk2");
+
         if(chk1.checked == false && chk2.checked == false){
             document.getElementById("Div_Table_ID").innerHTML = ""; 
         }
         else{
-            if (chk1.checked && chk2.checked) {
-            str = "n";
-            
-        }
-        else if(chk1.checked){
-            str = "Sensor 2";
-        }
-        else{
-            str = "Sensor 1";          
-        }
-
+            if (chk1.checked && chk2.checked) {str = "n"; 
+            }
+            else if(chk1.checked){str = "Sensor 2";
+            }
+            else{str = "Sensor 1";
+            }
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onload = function() {
@@ -68,13 +62,8 @@
         }
         xmlhttp.open("GET", "Dynamic_Table.php?q=" +str, true);
         xmlhttp.send();
-        }
-
-
-        
+        }       
     }
-
-
     ////////////////////////////////////////////////////////////////////////////
     function showVAL1(str) {
         if (str.length == 0) {
@@ -110,4 +99,5 @@
         }
     }        
 </script>
+
 </html>
