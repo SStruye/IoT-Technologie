@@ -18,25 +18,21 @@ $S1_Value = $_POST['S1_Value'];
 $S2_Value = $_POST['S2_Value'];
 
 if(isset($_POST['submit']) && $_POST['randcheck']==$_SESSION['rand'])
-{
-    
-    $sql = "INSERT INTO student_12001895.Data_Measurement".
-    "(S1_Value, S2_Value) "."VALUES ".
-    "('$S1_Value', '$S2_Value')";
-
-    if ($conn->query($sql)) {
+{   
+    $sql = "INSERT INTO student_12001895.Sensor_Data"."(id, value) "."VALUES "."('1', '$S1_Value');";
+    $sql .= "INSERT INTO student_12001895.Sensor_Data"."(id, value) "."VALUES "."('2', '$S2_Value')";
+    if ($conn->multi_query($sql)) {
         printf("Record inserted successfully.<br />");
     }
 }
-
 if ($conn->errno) {
     printf("Could not insert record into table: %s<br />", $conn->error);
     $conn->close();
 }
+
 else {
     ?>  
     <form method = "post" action = "">
-
     <?php
     $rand=rand();
     $_SESSION['rand']=$rand;
@@ -59,6 +55,5 @@ else {
     </form>
     <?php
 }
-
 $conn->close();
 ?>
