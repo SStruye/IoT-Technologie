@@ -44,16 +44,16 @@
     function LoadSens(){
         var chk1 = document.getElementById("chk1");
         var chk2 = document.getElementById("chk2");
-
+    
         if(chk1.checked == false && chk2.checked == false){
             document.getElementById("Div_Table_ID").innerHTML = ""; 
         }
         else{
-            if (chk1.checked && chk2.checked) {str = "n"; 
+            if (chk1.checked && chk2.checked) {str = 0; 
             }
-            else if(chk1.checked){str = "Sensor 2";
+            else if(chk1.checked){str = 2;
             }
-            else{str = "Sensor 1";
+            else{str = 1;
             }
 
         var xmlhttp = new XMLHttpRequest();
@@ -67,7 +67,7 @@
     ////////////////////////////////////////////////////////////////////////////
     function showVAL1(str) {
         if (str.length == 0) {
-            document.getElementById("Div_Table_ID").innerHTML = "";
+            LoadSens();
             return;
         } else {
             const arr = ["1", str];
@@ -84,7 +84,7 @@
     ////////////////////////////////////////////////////////////////////////////
     function showVAL2(str) {
         if (str.length == 0) {
-            document.getElementById("Div_Table_ID").innerHTML = "";
+            LoadSens();
             return;
         } else {
             const arr = ["2", str];

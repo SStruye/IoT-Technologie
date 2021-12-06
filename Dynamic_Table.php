@@ -5,8 +5,8 @@ $password = "hgDgXCYb8OB1";
 
 $q = $_GET['q'];
 
-$header = array("ID", "Sensor 1", "Sensor 2", "Timestamp");
-$fieldname = array("S_ID", "S1_Value", "S2_Value", "S_Timestamp");
+$header = array("Sensor 1", "Sensor 2", "Timestamp");
+$fieldname = array("id", "value", "timestamp");
 
 $conn = new mysqli($servername, $username, $password);
 
@@ -14,31 +14,39 @@ if ($conn->connect_errno) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT S_ID, S_Timestamp, S1_Value, S2_Value FROM student_12001895.Data_Measurement";
+$sql = "SELECT id, value, timestamp FROM student_12001895.Sensor_Data";
 
 echo '<table class="A"> <tr>'; 
 
-for($i = 0; $i <= 3; $i++){
-    if( strcmp($header[$i], $q) !== 0){
+for($i = 0; $i <= 2; $i++){
+    if($i !== ($q-1)){
         echo '<th class="tbl">'.$header[$i].'</th>';
     };
 };
 echo '</tr>';
-
     
 if ($result = $conn->query($sql)) {
     while ($row = $result->fetch_assoc()) {
-        echo '<tr>';     
-        for($i = 0; $i <= 3; $i++){
-            if( strcmp($header[$i], $q) !== 0){
-                echo '<td class="tbl">'.$row[$fieldname[$i]].'</td>';
-            };
-        };
-        echo '</tr>';
+        echo '<tr>';
+        if($row["id"] !== $q){
+            echo '<td class="tbl">'.$row["value"].'</td>';
+        }
+        $row = $result->fetch_assoc();
+        if($row["id"] !== $q){
+            echo '<td class="tbl">'.$row["value"].'</td>';
+        }
+        echo '<td class="tbl">'.$row["timestamp"].'</td>';
+    echo '<tr>';
     }
-    
     $result->free();
 } 
 
 $conn->close();
+
+
+
+
+
+
 ?>
+
