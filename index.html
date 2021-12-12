@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html >
     
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8,9 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Date Measurement</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<body>
+<body onload="LoadSens()">
     <div class = "topnav">
         <li><a href="#home" class="active">home</a></li>
         <li><a href="#contact" class="active">contact</a></li>
@@ -18,14 +19,15 @@
     </div>
     <div class="content-sidebar">
 
+
+        
         <div class = "sidebar">
             <div class="sidelist"> 
-
             <table class ="sidetable">
                 <tr>
-                <td>sensor 1 </td><td><label class="switch"><input class="toggle" type="checkbox" id="chk1" onclick="LoadSens()"><span class="slider round"></span></label></td></tr>                        
+                <td>sensor 1 </td><td><label class="switch"><input class="toggle1" type="checkbox" id="chk1" checked><span class="slider round"></span></label></td></tr>                        
                 <tr>
-                <td>sensor 2 </td><td><label class="switch"><input class="toggle" type="checkbox" id="chk2" onclick="LoadSens()"><span class="slider round"></span></label></td></tr>                          
+                <td>sensor 2 </td><td><label class="switch"><input class="toggle1" type="checkbox" id="chk2" checked><span class="slider round"></span></label></td></tr>                          
             </table>
 
             <div class="inputs">
@@ -42,28 +44,27 @@
 
 <script>  
     function LoadSens(){
-        var chk1 = document.getElementById("chk1");
-        var chk2 = document.getElementById("chk2");
-    
-        if(chk1.checked == false && chk2.checked == false){
-            document.getElementById("Div_Table_ID").innerHTML = ""; 
-        }
-        else{
-            if (chk1.checked && chk2.checked) {str = 0; 
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onload = function() {
+            document.getElementById("Div_Table_ID").innerHTML = this.responseText;
             }
-            else if(chk1.checked){str = 2;
-            }
-            else{str = 1;
-            }
-
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onload = function() {
-        document.getElementById("Div_Table_ID").innerHTML = this.responseText;
-        }
-        xmlhttp.open("GET", "Dynamic_Table.php?q=" +str, true);
-        xmlhttp.send();
-        }       
+            xmlhttp.open("GET", "Dynamic_Table.php?q=");
+            xmlhttp.send();                   
     }
+
+    $(document).ready(function(){
+        $(".toggle1").click(function(){
+            $(".tbl1").toggle();
+        });
+    });
+    $(document).ready(function(){
+        $(".toggle2").click(function(){
+            $(".tbl2").toggle();
+        });
+    });
+
+
+
     ////////////////////////////////////////////////////////////////////////////
     function showVAL1(str) {
         if (str.length == 0) {
@@ -80,6 +81,19 @@
         xmlhttp.open("GET", "Dynamic_Table_Single.php?q=" + strarr);
         xmlhttp.send();
         }
+        if(chk1.checked){
+        $(".tbl1").show();
+        }
+        else{
+            $(".tbl1").hide();
+        }
+        if(chk2.checked){
+        $(".tbl2").show();
+        }
+        else{
+            $(".tbl2").hide();
+        }
+
     }
     ////////////////////////////////////////////////////////////////////////////
     function showVAL2(str) {

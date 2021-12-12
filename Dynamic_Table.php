@@ -17,24 +17,17 @@ if ($conn->connect_errno) {
 $sql = "SELECT id, value, timestamp FROM student_12001895.Sensor_Data";
 
 echo '<table class="A"> <tr>'; 
-
-for($i = 0; $i <= 2; $i++){
-    if($i !== ($q-1)){
-        echo '<th class="tbl">'.$header[$i].'</th>';
-    };
-};
+        echo '<th class="tbl1">'.$header[0].'</th>';
+        echo '<th class="tbl2">'.$header[1].'</th>';
+        echo '<th class="tbl">'.$header[2].'</th>';
 echo '</tr>';
     
 if ($result = $conn->query($sql)) {
     while ($row = $result->fetch_assoc()) {
         echo '<tr>';
-        if($row["id"] !== $q){
-            echo '<td class="tbl">'.$row["value"].'</td>';
-        }
+        echo '<td class="tbl1">'.$row["value"].'</td>';
         $row = $result->fetch_assoc();
-        if($row["id"] !== $q){
-            echo '<td class="tbl">'.$row["value"].'</td>';
-        }
+        echo '<td class="tbl2">'.$row["value"].'</td>';
         echo '<td class="tbl">'.$row["timestamp"].'</td>';
     echo '<tr>';
     }
@@ -42,11 +35,6 @@ if ($result = $conn->query($sql)) {
 } 
 
 $conn->close();
-
-
-
-
-
 
 ?>
 

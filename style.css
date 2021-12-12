@@ -94,7 +94,7 @@ input[type="text"], textarea {
   /* border: 1px solid #d1d1d1; */
 }
 
-th.tbl, td.tbl{
+th.tbl, td.tbl, th.tbl1, td.tbl1, th.tbl2, td.tbl2{
   padding: 5px;
   border: 1px solid #191919;
   border-collapse: collapse;
