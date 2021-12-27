@@ -164,3 +164,9 @@ th.tbl, td.tbl, th.tbl1, td.tbl1, th.tbl2, td.tbl2{
   .slider.round:before {
     border-radius: 50%;
   }
+
+  .graph{
+    margin: auto;
+    color: white;
+    width: 70%;
+  }

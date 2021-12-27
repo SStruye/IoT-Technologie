@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html >
+    
+<head>
+    <link rel="stylesheet" type="text/css" href="jquery.jqplot.css" />
+    <!--[if IE]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <script language="javascript" type="text/javascript" src="jqplot/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="jqplot/jquery.jqplot.min.js"></script>
+    <script language="javascript" type="text/javascript" src="jqplot/plugins/jqplot.logAxisRenderer.js"></script>
+    <script language="javascript" type="text/javascript" src="jqplot/plugins/jqplot.dateAxisRenderer.js"></script>
+</head>
+
+<body onload="Load()">
+  <div id="graph"></div> 
+</body>
+
+
+<script>
+    function Load(){
+        $.ajax({
+        url: 'Dynamic_Graph.php?rand=' + Math.random(),
+        dataType: 'JSON',
+        type: 'GET',
+        success: function(results) { 
+            $.jqplot('graph',  [results], {
+            title:'Customized Date Axis', 
+            axes:{
+                xaxis:{renderer:$.jqplot.DateAxisRenderer,}
+            },
+            series:[{lineWidth:4, markerOptions:{style:'square'}}]
+            }
+        );
+        }
+        });
+
+
+
+            // var xmlhttp = new XMLHttpRequest();
+            // xmlhttp.onload = function() {
+            // var json_data = this.responseText;
+            // }
+            // xmlhttp.open("GET", "Dynamic_Graph.php?q=");
+            // xmlhttp.send();   
+            // alert(json_data);
+
+
+
+
+            
+
+    }  
+
+</script>
+
+
+</html>

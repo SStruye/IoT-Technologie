@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html >
+<html>
     
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8,7 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Date Measurement</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="jquery.jqplot.css" />
+    <!--[if IE]><script language="javascript" type="text/javascript" src="excanvas.js"></script><![endif]-->
+    <script language="javascript" type="text/javascript" src="jqplot/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="jqplot/jquery.jqplot.min.js"></script>
+    <script language="javascript" type="text/javascript" src="jqplot/plugins/jqplot.logAxisRenderer.js"></script>
+    <script language="javascript" type="text/javascript" src="jqplot/plugins/jqplot.dateAxisRenderer.js"></script>
 </head>
 
 <body onload="LoadSens()">
@@ -37,20 +43,55 @@
 
             </div>
         </div>
-        <div class ="content" id = "Div_Table_ID">
-        </div>          
+        <div class ="content">
+            <div id = "Div_Table_ID"></div> 
+            <div id = "graph" class = "graph"></div>   
+        </div>  
     </div>
 </body>
 
 <script>  
+var test = 10;
     function LoadSens(){
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onload = function() {
-            document.getElementById("Div_Table_ID").innerHTML = this.responseText;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onload = function() {
+        document.getElementById("Div_Table_ID").innerHTML = this.responseText;
+        }
+        xmlhttp.open("GET", "Dynamic_Table.php?q=");
+        xmlhttp.send();  
+    
+
+        $.ajax({
+            url:'Dynamic_Graph1.php',
+            type:"GET",
+            data:({q: '1'}),
+            dataType:'JSON',
+            success:function(response1){
+                $.ajax({
+                    url:'Dynamic_Graph1.php',
+                    type:"GET",
+                    data:({q: '2'}),
+                    dataType:'JSON',
+                    success:function(response2){
+                        $.jqplot('graph',[response1,response2],
+                        {    
+                            title:'Default Date Axis',
+                            axes:{
+                                xaxis:{
+                                    renderer:$.jqplot.DateAxisRenderer
+                                }
+                            },
+                            series:[{lineWidth:4, markerOptions:{style:'square'}}]
+                        });
+                    }
+                });
             }
-            xmlhttp.open("GET", "Dynamic_Table.php?q=");
-            xmlhttp.send();                   
-    }
+        });
+
+    } 
+
+
+
 
     $(document).ready(function(){
         $(".toggle1").click(function(){
@@ -63,10 +104,11 @@
         });
     });
 
-
-
     ////////////////////////////////////////////////////////////////////////////
+
     function showVAL1(str) {
+        document.getElementById("chk1").checked = true;
+        document.getElementById("chk2").checked = true;
         if (str.length == 0) {
             LoadSens();
             return;
@@ -80,23 +122,16 @@
             }
         xmlhttp.open("GET", "Dynamic_Table_Single.php?q=" + strarr);
         xmlhttp.send();
-        }
-        if(chk1.checked){
-        $(".tbl1").show();
-        }
-        else{
-            $(".tbl1").hide();
-        }
-        if(chk2.checked){
-        $(".tbl2").show();
-        }
-        else{
-            $(".tbl2").hide();
-        }
+        
 
+        }
     }
+
     ////////////////////////////////////////////////////////////////////////////
+
     function showVAL2(str) {
+        document.getElementById("chk1").checked = true;
+        document.getElementById("chk2").checked = true;
         if (str.length == 0) {
             LoadSens();
             return;
